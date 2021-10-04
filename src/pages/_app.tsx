@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react';
 import createCache from '@emotion/cache';
 import { CacheProvider, Global } from '@emotion/react';
 import { PageLoading } from '@/components';
+import { wrapper } from '@/redux';
 import { globalStyles } from '@/styles';
 import { pageviewLog } from '@/utils';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface IMyAppStates {
   isRouteChanging: boolean;
@@ -84,4 +86,4 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
   });
 }
 
-export default appWithTranslation(MyApp);
+export default wrapper.withRedux(appWithTranslation(MyApp));
