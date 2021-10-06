@@ -1,118 +1,113 @@
-import Image from 'next/image';
 import { memo } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import IsEqual from 'react-fast-compare';
-import { useSettingsStore } from '@/hooks';
-import { instagramImages } from './interfaces';
-import {
-  BottomContainer,
-  ContentsContainer,
-  FooterContainer,
-  InstagramContainer,
-  LinksContainer,
-  SocialContainer,
-  TextCopyright,
-} from './styles';
+import { BottomFooter, FooterImageContainer, FooterLinkContainer, FooterWrapper } from './styles';
 
 function Footer(): JSX.Element {
-  const { settings } = useSettingsStore();
-
   return (
-    <FooterContainer className="division">
+    <FooterWrapper className="bg-color-01 division">
       <Container>
         <Row>
-          <Col className="mb-40" md={5} lg={4}>
-            <Image alt="ImgLogo" layout="fixed" width={204} height={60} src="/images/logo.png" />
-            <p className="mt-20">
-              연산동 네일샵 뷰티투미 입니다. 꼼꼼함과 유지력으로 고객님들의 네일을 관리하겠습니다.
-            </p>
+          <Col md={5} lg={4}>
+            <div className="mb-40">
+              <img src="/images/logo.png" width="204" height="60" alt="footer-logo" />
+              <p className="txt-color-05 mt-20">
+                Aliquam nullam tempor sapien at gravida donec congue ipsum a porta magna and justo velna auctor sapien
+                and augue
+              </p>
+            </div>
           </Col>
           <Col md={4} lg={3} xl={3}>
-            <ContentsContainer className="mb-40">
-              <h6>문의하기</h6>
-              <p>부산광역시 연제구 월드컵대로</p>
-              <p>114번길 13 2층 뷰티투미</p>
-              <div className="mt-15">
-                <p>오픈시간: AM9:00 ~ PM10:00</p>
-                <p className="phone-number">
-                  <a href="tel:+8201024216034">연락처: 010-2421-6034</a>
+            <div className="footer-contacts mb-40">
+              <h6 className="h6-lg txt-color-01">Let's Talk</h6>
+              <p className="txt-color-05">121 King Street, Melbourne,</p>
+              <p className="txt-color-05">Victoria 3000 Australia</p>
+              <div className="txt-color-05 mt-15">
+                <p className="footer-hightlight">
+                  E: <a href="mailto:yourdomain@mail.com">hello@yourdomain.com</a>
+                </p>
+                <p>Phone: +12 9 8765 4321</p>
+                <p>
+                  Skype : <a href="tel:123456789">support.spamagic</a>
                 </p>
               </div>
-            </ContentsContainer>
+            </div>
           </Col>
           <Col md={3} lg={2}>
-            <LinksContainer className="mb-40">
-              <h6>바로가기</h6>
-              <ul className="clearfix">
+            <FooterLinkContainer className="mb-40">
+              <h6 className="h6-lg txt-color-01">Quick Links</h6>
+              <ul className="txt-color-05 clearfix">
                 <li>
                   <p>
-                    <a href="#">예약하기</a>
+                    <a href="#">About Us</a>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <a href="#">이벤트</a>
+                    <a href="#">Advertising</a>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <a href="#">자주붇는질문</a>
+                    <a href="#">Help & FAQs</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#">Appointments</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#">Gift Cards</a>
                   </p>
                 </li>
               </ul>
-            </LinksContainer>
+            </FooterLinkContainer>
           </Col>
           <Col md={12} lg={3}>
-            <InstagramContainer className="mb-40">
-              <h6>인스타그램</h6>
+            <FooterImageContainer className="mb-40">
+              <h6 className="h6-lg txt-color-01">Instagram</h6>
               <ul className="text-center clearfix">
-                {instagramImages.map((i) => {
-                  return (
-                    <li key={i.index}>
-                      <a href={i.linkUrl} target="_blank" rel="noreferrer noopener">
-                        <img className="insta-img" src={i.imageUrl} alt="ImgInsta" />
-                      </a>
-                    </li>
-                  );
-                })}
+                <li>
+                  <a href="#" target="_blank">
+                    <img className="insta-img" src="images/instagram/img-01.jpg" alt="insta-img" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank">
+                    <img className="insta-img" src="images/instagram/img-02.jpg" alt="insta-img" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank">
+                    <img className="insta-img" src="images/instagram/img-03.jpg" alt="insta-img" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank">
+                    <img className="insta-img" src="images/instagram/img-04.jpg" alt="insta-img" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank">
+                    <img className="insta-img" src="images/instagram/img-05.jpg" alt="insta-img" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank">
+                    <img className="insta-img" src="images/instagram/img-06.jpg" alt="insta-img" />
+                  </a>
+                </li>
               </ul>
-            </InstagramContainer>
+            </FooterImageContainer>
           </Col>
         </Row>
-        <BottomContainer>
-          <Row className="d-flex align-items-center">
-            <Col lg={6}>
-              <TextCopyright>&copy; 2021 Beauty to mi. All Rights Reserved</TextCopyright>
-            </Col>
-            <Col lg={6}>
-              <SocialContainer className={`${settings.isMobile ? 'text-start' : 'text-end'} clearfix`}>
-                <li>
-                  <p className="first-list-link">
-                    <a href="#">
-                      <i className="fab fa-facebook-f" /> Naver
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <a href="#">
-                      <i className="fab fa-twitter" /> KaKao
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p className="last-li">
-                    <a href="#">
-                      <i className="fab fa-instagram" /> Instagram
-                    </a>
-                  </p>
-                </li>
-              </SocialContainer>
-            </Col>
-          </Row>
-        </BottomContainer>
+        <BottomFooter>
+
+        </BottomFooter>
       </Container>
-    </FooterContainer>
+    </FooterWrapper>
   );
 }
 

@@ -1,47 +1,52 @@
 import styled from '@emotion/styled';
-import { breakPoints, defaultTheme } from '@/styles';
+import { breakPoints } from '@/styles';
 
-export const FooterContainer = styled.div`
-  background-color: ${defaultTheme.colors.gray100};
-  color: ${defaultTheme.colors.gray500};
+export const FooterWrapper = styled.div`
   padding-bottom: 30px;
   padding-top: 100px;
 
   h6 {
-    color: ${defaultTheme.colors.gray600};
-    font-size: 1.1875rem;
+    line-height: 1;
     margin-bottom: 25px;
   }
 
-  .phone-number a {
+  .footer-contacts {
+    padding-left: 5px;
+
+    p {
+      margin-bottom: 3px;
+    }
+  }
+
+  .footer-hightlight a {
     font-weight: 500;
     text-decoration: underline;
   }
-`;
 
-export const ContentsContainer = styled.div`
-  padding-left: 5px;
+  @media ${breakPoints.lgDown} {
+    padding-bottom: 30px;
+    padding-top: 80px;
 
-  p {
-    margin-bottom: 3px;
+    .footer-contacts {
+      padding-left: 0;
+    }
   }
 `;
 
-export const LinksContainer = styled.div`
+export const FooterLinkContainer = styled.div`
   li {
     clear: none !important;
     display: block !important;
     margin: 0;
     padding: 0;
     width: auto !important;
-
     p {
       margin-bottom: 10px;
     }
   }
 `;
 
-export const InstagramContainer = styled.div`
+export const FooterImageContainer = styled.div`
   .insta-img {
     border-radius: 4px;
     float: left;
@@ -50,15 +55,31 @@ export const InstagramContainer = styled.div`
     width: 75px;
   }
 
-  @media ${breakPoints.mdDown} {
+  @media ${breakPoints.xlDown} {
+    .insta-img {
+      height: 64px;
+      margin: 3px;
+      width: 64px;
+    }
+  }
+
+  @media ${breakPoints.lgDown} {
     .insta-img {
       height: 100px;
-      margin: 4px;
+      margin: 5px;
       width: 100px;
     }
   }
 
   @media ${breakPoints.smDown} {
+    .insta-img {
+      height: 115px;
+      margin: 5px;
+      width: 115px;
+    }
+  }
+
+  @media ${breakPoints.xsDown} {
     .insta-img {
       height: 88px;
       margin: 4px;
@@ -67,51 +88,13 @@ export const InstagramContainer = styled.div`
   }
 `;
 
-export const BottomContainer = styled.div`
-  border-top: 1px solid ${defaultTheme.colors.gray300};
-  margin-top: 28px;
-  padding-top: 28px;
-`;
+export const BottomFooter = styled.div`
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+  padding-top: 30px;
 
-export const TextCopyright = styled.p`
-  line-height: 1;
-`;
-
-export const SocialContainer = styled.ul`
-  li {
-    display: inline-block !important;
+  .footer-copyright p {
+    line-height: 1;
     margin-bottom: 0;
-    i {
-      font-size: 0.875rem;
-      line-height: 1;
-      position: relative;
-      right: 2px;
-      top: -1px;
-      -webkit-transition: all 400ms ease-in-out;
-      -moz-transition: all 400ms ease-in-out;
-      -o-transition: all 400ms ease-in-out;
-      -ms-transition: all 400ms ease-in-out;
-      transition: all 400ms ease-in-out;
-    }
-    p {
-      font-weight: 300;
-      line-height: 1;
-      margin-bottom: 0;
-      margin-left: 10px;
-    }
-  }
-  p {
-    &::after {
-      content: '|';
-      padding-left: 11px;
-      position: relative;
-      top: -1px;
-    }
-  }
-  p.last-li {
-    &::after {
-      content: ' ';
-      padding-left: 0;
-    }
   }
 `;

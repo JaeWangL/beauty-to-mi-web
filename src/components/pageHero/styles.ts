@@ -1,14 +1,58 @@
 import styled from '@emotion/styled';
-import { breakPoints } from '@/styles';
+import { breakPoints, defaultTheme } from '@/styles';
 
 type HeroWrapperProps = {
-  imagePath: string;
+  backgroundImagePath: string;
 };
 export const HeroWrapper = styled.section<HeroWrapperProps>`
-  background-image: ${(props) => `url(${props.imagePath}) `};
+  background: no-repeat center center;
+  background-image: ${(props) => `url(${props.backgroundImagePath}) `};
+  background-size: cover;
+  color: ${defaultTheme.colors.white};
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 0;
+    padding: 0 15%;
+  }
+
+  @media ${breakPoints.xlDown} {
+    p {
+      padding: 0 20%;
+    }
+  }
+
+  @media ${breakPoints.lgDown} {
+    h2 {
+      margin-bottom: 15px;
+    }
+    p {
+      padding: 0 10%;
+    }
+  }
+
+  @media ${breakPoints.mdDown} {
+    p {
+      padding: 0 5%;
+    }
+  }
+
+  @media ${breakPoints.smDown} {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  @media ${breakPoints.xsDown} {
+    p {
+      padding: 0;
+    }
+  }
 `;
 
-export const BreadcrumbWrapper = styled.div`
+export const BreadcrumbContainer = styled.div`
   margin-top: 25px;
   text-align: center;
 
@@ -17,12 +61,12 @@ export const BreadcrumbWrapper = styled.div`
   }
 `;
 
-export const BreadcrumbContainer = styled.div`
+export const BreadcrumbNavContainer = styled.div`
   display: inline-block;
   margin: 0 auto;
 `;
 
-export const BreadcrumbNav = styled.ol`
+export const BreadcrumbList = styled.ol`
   background-color: transparent;
   border-radius: 0;
   margin-bottom: 0;
@@ -36,18 +80,15 @@ export const BreadcrumbItem = styled.li`
     font-size: 1.125rem;
     font-weight: 500;
     text-decoration: underline;
-
     &:hover {
       color: #fff;
     }
   }
-
   &.active {
     color: #fff;
     font-size: 1.125rem;
     font-weight: 500;
   }
-
   + .breadcrumb-item {
     padding-left: 15px;
     &::before {

@@ -17,8 +17,10 @@ function InnerLayout(props: InnerLayoutProps): JSX.Element {
   return (
     <BaseLayout>
       <Header />
-      <PageHero title={title} description={description} heroImagePath={heroImagePath} />
-      <InnerPageWrapper>{children}</InnerPageWrapper>
+      <InnerPageWrapper>
+        <PageHero title={title} description={description} heroImagePath={heroImagePath} />
+        {children}
+      </InnerPageWrapper>
       <Footer />
     </BaseLayout>
   );

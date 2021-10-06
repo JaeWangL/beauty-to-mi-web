@@ -1,24 +1,33 @@
-import Link from 'next/link';
 import { memo } from 'react';
 import IsEqual from 'react-fast-compare';
-import { HoverOverlay, MasonryItem } from './styles';
+import { PhotoWrapper } from './styles';
 
-function GalleryPhoto(): JSX.Element {
+type GalleryPhotoProps = {
+  title: string;
+  description: string;
+  imagePath: string;
+  imageLink: string;
+};
+function GalleryPhoto(props: GalleryPhotoProps): JSX.Element {
+  const { description, imageLink, imagePath, title } = props;
+
   return (
-    <MasonryItem>
-      <HoverOverlay>
-        <img alt="ImgGallery" className="img-fluid" src="/mock/img-1.jpg" />
+    <PhotoWrapper>
+      <div className="hover-overlay">
+        <img className="img-fluid" src={imagePath} alt="img-gallery" />
         <div className="item-overlay" />
-        <div className="image-description white-color">
+        <div className="image-description">
           <div className="image-data">
             <h5 className="h5-sm">
-              <Link href="/mock/img-1.jpg">Hot Stones Therapy</Link>
+              <a target="_blank" rel="noopener noreferrer" className="image-link" href={imageLink}>
+                {title}
+              </a>
             </h5>
-            <p>SPA & Massage Therapy</p>
+            <p>{description}</p>
           </div>
         </div>
-      </HoverOverlay>
-    </MasonryItem>
+      </div>
+    </PhotoWrapper>
   );
 }
 

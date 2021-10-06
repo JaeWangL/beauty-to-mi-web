@@ -14,7 +14,7 @@ function BaseLayout(props: BaseLayoutProps): JSX.Element {
     settings.setMobile({ isMobile: window.innerWidth < 768 });
   }, []);
 
-  return <div>{children}</div>;
+  return <div id="layout-body">{children}</div>;
 }
 
 export default memo(BaseLayout, IsEqual);

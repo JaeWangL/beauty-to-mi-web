@@ -11,6 +11,7 @@ export const defaultTheme = {
     gray600: '#727475',
     gray700: '#666666',
     gray800: '#555555',
+    gray900: '#333333',
     navy300: '#465777',
     pink400: '#efa697',
     primary: '#efa697',
@@ -20,9 +21,10 @@ export const defaultTheme = {
 
 export const zIndices = {
   header: 999,
-  headerMenu: 1031,
+  headerDesktop: 1031,
   headerMobile: 10002,
   headerMobileMenu: 102,
+  loading: 99999999,
 };
 
 export const breakPoints = {

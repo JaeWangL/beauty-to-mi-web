@@ -3,70 +3,87 @@ import { memo, useCallback, useState } from 'react';
 import IsEqual from 'react-fast-compare';
 import { useSettingsStore } from '@/hooks';
 import {
+  DesktopHeaderContainer,
+  DesktopHeaderContent,
   HeaderContainer,
   HeaderWrapper,
-  MenuContainer,
-  MenuInnerContainer,
-  MenuListContainer,
+  LogoContainer,
+  MenuNav,
+  MenuNavContainer,
+  MobileHeaderContainer,
   MobileMenu,
-  MobileMenuContainer,
 } from './styles';
 
 function Header(): JSX.Element {
-  const settings = useSettingsStore();
-  const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
+  const { settings } = useSettingsStore();
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
-  const onMobileMenuClick = useCallback(() => {
-    setMenuOpen(!isMenuOpen);
-  }, [isMenuOpen]);
+  const onMobileToggleClick = useCallback((): void => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  }, [isMobileMenuOpen]);
 
   const renderHeader = useCallback(() => {
-    if (!settings.settings.isMobile) {
+    if (!settings.isMobile) {
       return (
-        <MenuContainer className="clearfix">
-          <MenuInnerContainer className="clearfix">
-            <div className="logo-desktop">
+        <DesktopHeaderContainer className="clearfix">
+          <DesktopHeaderContent className="clearfix">
+            <LogoContainer>
               <Link href="/" passHref>
-                <img src="/images/logo.png" width="170" height="50" alt="header-logo" />
+                <a>
+                  <img src="/images/logo.png" width="170" height="50" alt="header-logo" />
+                </a>
               </Link>
-            </div>
-            <MenuListContainer className="clearfix">
-              <ul>
+            </LogoContainer>
+            <MenuNavContainer>
+              <MenuNav>
                 <li>
-                  <Link href="/">홈</Link>
+                  <Link href="/" passHref>
+                    <a>Home</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">요금 가격표</Link>
+                  <Link href="/" passHref>
+                    <a>Home</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">아트 갤러리</Link>
+                  <Link href="/" passHref>
+                    <a>Home</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">오시는길</Link>
+                  <Link href="/" passHref>
+                    <a>Home</a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="btn-reservation last-link">
-                    예약하기
+                  <Link href="/" passHref>
+                    <a>Home</a>
+                  </Link>
+                </li>
+                <li>
+                  <a href="#" className="btn btn-color-02 tra-01-hover last-link">
+                    Book Now
                   </a>
                 </li>
-              </ul>
-            </MenuListContainer>
-          </MenuInnerContainer>
-        </MenuContainer>
+              </MenuNav>
+            </MenuNavContainer>
+          </DesktopHeaderContent>
+        </DesktopHeaderContainer>
       );
     }
 
     return (
-      <MobileMenuContainer className="clearfix">
-        <span className="logo-small">
+      <MobileHeaderContainer className={`clearfix ${isMobileMenuOpen ? 'active' : ''}`}>
+        <span className="smllogo">
           <img src="/images/logo.png" width="170" height="50" alt="mobile-logo" />
         </span>
-        <MobileMenu onClick={onMobileMenuClick}>
+        <MobileMenu onClick={onMobileToggleClick}>
           <span />
         </MobileMenu>
-      </MobileMenuContainer>
+      </MobileHeaderContainer>
     );
-  }, [settings.settings.isMobile]);
+  }, [settings.isMobile]);
 
   return (
     <HeaderWrapper>

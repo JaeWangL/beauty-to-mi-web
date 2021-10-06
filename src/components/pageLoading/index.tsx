@@ -1,7 +1,7 @@
 import { useNProgress } from '@tanem/react-nprogress';
 import { memo } from 'react';
 import IsEqual from 'react-fast-compare';
-import { LoadingWrapper, ProgressBar, Spinner } from './styles';
+import { Loader, LoadingContainer, LoadingWrapper, Spinner } from './styles';
 
 interface IPageLoadingProps {
   isRouteChanging: boolean;
@@ -14,10 +14,16 @@ function PageLoading(props: IPageLoadingProps): JSX.Element {
   });
 
   return (
-    <LoadingWrapper isFinished={isFinished} animationDuration={animationDuration}>
-      <ProgressBar animationDuration={animationDuration} progress={progress}>
-        <Spinner />
-      </ProgressBar>
+    <LoadingWrapper isFinished={isFinished}>
+      <LoadingContainer>
+        <Loader>
+          <Spinner>
+            <div className="ring" />
+            <div className="ring" />
+            <div className="dot" />
+          </Spinner>
+        </Loader>
+      </LoadingContainer>
     </LoadingWrapper>
   );
 }
